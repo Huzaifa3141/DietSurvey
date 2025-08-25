@@ -1,0 +1,95 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Participant {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  name        String
+  category    String
+  gender      String
+  age         Int
+  department  String?
+  studentId   String?
+  staffId     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  responses   Response[]
+  advisory    Advisory[]
+  
+  @@map("participants")
+}
+
+model Survey {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  questions   Question[]
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  responses   Response[]
+  
+  @@map("surveys")
+}
+
+model Question {
+  id          String   @id @default(cuid())
+  surveyId    String
+  survey      Survey   @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+  text        String
+  type        String
+  options     String? // JSON string for multiple choice questions
+  required    Boolean  @default(true)
+  order       Int
+  responses   Response[]
+  
+  @@map("questions")
+}
+
+model Response {
+  id            String   @id @default(cuid())
+  participantId String
+  participant   Participant @relation(fields: [participantId], references: [id], onDelete: Cascade)
+  questionId    String
+  question      Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  surveyId      String
+  survey        Survey   @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+  answer        String
+  createdAt     DateTime @default(now())
+  
+  @@map("responses")
+}
+
+model Advisory {
+  id            String   @id @default(cuid())
+  participantId String
+  participant   Participant @relation(fields: [participantId], references: [id], onDelete: Cascade)
+  title         String
+  content       String
+  recommendations String
+  healthScore   Int
+  createdAt     DateTime @default(now())
+  
+  @@map("advisories")
+}
+
+model Analysis {
+  id          String   @id @default(cuid())
+  type        String   // e.g., "demographic", "dietary", "trends"
+  data        String   // JSON string containing analysis data
+  filters     String?  // JSON string containing applied filters
+  createdAt   DateTime @default(now())
+  
+  @@map("analyses")
+}
+
+
