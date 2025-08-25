@@ -1,0 +1,10 @@
+{
+  "short_name": "DietSurvey",
+  "name": "Diet Survey Platform",
+  "description": "A comprehensive platform for conducting dietary surveys and health analysis",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0ea5e9",
+  "background_color": "#ffffff"
+}

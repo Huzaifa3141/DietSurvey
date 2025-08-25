@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/DietSurvey/static/css/main.03327b2f.css",
+    "main.js": "/DietSurvey/static/js/main.69de8f40.js",
+    "index.html": "/DietSurvey/index.html",
+    "main.03327b2f.css.map": "/DietSurvey/static/css/main.03327b2f.css.map",
+    "main.69de8f40.js.map": "/DietSurvey/static/js/main.69de8f40.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.03327b2f.css",
+    "static/js/main.69de8f40.js"
+  ]
+}
