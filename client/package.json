@@ -2,7 +2,7 @@
   "name": "diet-survey-client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/Huzaifa3141/DietSurvey",
+  "homepage": "https://huzaifa3141.github.io/DietSurvey",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
